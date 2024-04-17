@@ -60,16 +60,36 @@ namespace AnimesProtech.Services
 
         public async Task<Anime> AtualizarAnime(int id, Anime anime)
         {
+            if (id <= 0)
+            {
+                return null; 
+            }
+
             var animeExistente = await _context.Animes.FindAsync(id);
             if (animeExistente == null)
+            {
                 return null;
+            }
 
             animeExistente.Nome = anime.Nome;
             animeExistente.Resumo = anime.Resumo;
             animeExistente.Diretor = anime.Diretor;
 
-            await _context.SaveChangesAsync();
-            return animeExistente;
+            if (string.IsNullOrEmpty(animeExistente.Nome))
+            {
+                return null; 
+            }
+
+            try
+            {
+                await _context.SaveChangesAsync();
+                return animeExistente; 
+            }
+            catch (DbUpdateException)
+            {
+                return null; 
+            }
         }
+
     }
 }

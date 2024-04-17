@@ -18,9 +18,18 @@ namespace AnimesProtech.Controllers
         [HttpPost]
         public async Task<IActionResult> CadastrarAnime([FromBody] Anime anime)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState); 
+            }
             var novoAnime = await _animeService.CadastrarAnime(anime);
+            if (novoAnime == null)
+            {
+                return BadRequest();
+            }
             return CreatedAtAction(nameof(GetAnime), new { id = novoAnime.Id }, novoAnime);
         }
+
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAnime(int id)
@@ -43,12 +52,20 @@ namespace AnimesProtech.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> AtualizarAnime(int id, [FromBody] Anime anime)
         {
+            if (id <= 0)
+            {
+                return BadRequest(); 
+            }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var animeAtualizado = await _animeService.AtualizarAnime(id, anime);
             if (animeAtualizado == null)
             {
-                return NotFound();
+                return NotFound(); 
             }
-            return Ok(animeAtualizado);
+            return Ok(animeAtualizado); 
         }
 
         [HttpDelete("{id}")]
