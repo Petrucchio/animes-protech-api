@@ -3,6 +3,7 @@
     "identityapp1": {
       "connectionInfo": "Registro do aplicativo: anime-protech-api, Locatário: Diretório Padrão (vituxo0bernogmail.onmicrosoft.com - Microsoft Entra ID)",
       "secretStore": "LocalSecretsFile",
+      "resourceId": null,
       "type": "identityapp.secretStore",
       "connectionId": "AzureAD:ClientSecret"
     }
