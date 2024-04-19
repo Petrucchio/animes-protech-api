@@ -26,6 +26,18 @@ Este projeto é uma API construída em .NET Core que fornece funcionalidades par
 5. Execute `dotnet ef database update` para aplicar as migrações ao banco de dados.
 6. Execute `dotnet run` para iniciar o servidor.
 
+## Gerador de Token
+
+Esta API utiliza o [Gerador de Token](https://github.com/Petrucchio/gerador-de-token) para gerar tokens de autenticação.
+
+Para configurar o Gerador de Token, siga as instruções no repositório vinculado.
+
+## Testes Unitários
+
+Este projeto inclui testes unitários para garantir a qualidade e integridade do código. Os testes são realizados usando [Testes Unitários](https://github.com/Petrucchio/TestesUnitarios).
+
+Para executar os testes unitários, siga as instruções no repositório vinculado.
+
 ## Contribuindo
 
 Para contribuir com este projeto, siga estas etapas:
